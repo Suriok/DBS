@@ -31,6 +31,12 @@ public class Recenze {
     @Column(name = "komentar", length = Integer.MAX_VALUE)
     private String komentar;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "\"id_Produkt\"", nullable = false)
+    private Produkt idProdukt;
+
+
     public Integer getId() {
         return id;
     }

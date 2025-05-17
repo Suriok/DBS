@@ -18,9 +18,9 @@ public class NazevVelikosti {
     private String nazevVelikosti;
 
     @ManyToMany
-    @JoinTable(name = "Velikosti",
-            joinColumns = @JoinColumn(name = "id_NazevVelikosti"),
-            inverseJoinColumns = @JoinColumn(name = "id_Produkt"))
+    @JoinTable(name = "\"Velikosti\"",
+            joinColumns = @JoinColumn(name = "\"id_NazevVelikosti\""),
+            inverseJoinColumns = @JoinColumn(name = "\"id_Produkt\""))
     private Set<Shop.entities.Produkt> produkts = new LinkedHashSet<>();
 
     public Integer getId() {

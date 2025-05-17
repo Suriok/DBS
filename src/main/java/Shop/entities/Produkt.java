@@ -5,13 +5,14 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import java.math.BigDecimal;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "\"Produkt\"")
 public class Produkt {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Produkt_id_gen")
-    @SequenceGenerator(name = "Produkt_id_gen", sequenceName = "Produkt_id_Produkt_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "\"id_Produkt\"", nullable = false)
     private Integer id;
 
@@ -26,6 +27,11 @@ public class Produkt {
     @Column(name = "\"Nazev\"", nullable = false, length = 64)
     private String nazev;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "id_znacka")
+    private Znacka idZnacka;
+
     @Column(name = "\"Barva\"", length = 20)
     private String barva;
 
@@ -37,6 +43,22 @@ public class Produkt {
 
     @Column(name = "\"URL\"")
     private String url;
+
+    @ManyToMany
+    @JoinTable(name = "Nalezi",
+            joinColumns = @JoinColumn(name = "id_Produkt"),
+            inverseJoinColumns = @JoinColumn(name = "id_Kategorie"))
+    private Set<Kategorie> kategories = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "idProdukt")
+    private Set<Recenze> recenzes = new LinkedHashSet<>();
+
+    @ManyToMany
+    @JoinTable(name = "Velikosti",
+            joinColumns = @JoinColumn(name = "id_Produkt"),
+            inverseJoinColumns = @JoinColumn(name = "id_NazevVelikosti"))
+    private Set<NazevVelikosti> nazevVelikostis = new LinkedHashSet<>();
+
 
     public Integer getId() {
         return id;
@@ -70,6 +92,14 @@ public class Produkt {
         this.nazev = nazev;
     }
 
+    public Znacka getIdZnacka() {
+        return idZnacka;
+    }
+
+    public void setIdZnacka(Znacka idZnacka) {
+        this.idZnacka = idZnacka;
+    }
+
     public String getBarva() {
         return barva;
     }
@@ -100,6 +130,30 @@ public class Produkt {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public Set<Kategorie> getKategories() {
+        return kategories;
+    }
+
+    public void setKategories(Set<Kategorie> kategories) {
+        this.kategories = kategories;
+    }
+
+    public Set<Recenze> getRecenzes() {
+        return recenzes;
+    }
+
+    public void setRecenzes(Set<Recenze> recenzes) {
+        this.recenzes = recenzes;
+    }
+
+    public Set<NazevVelikosti> getNazevVelikostis() {
+        return nazevVelikostis;
+    }
+
+    public void setNazevVelikostis(Set<NazevVelikosti> nazevVelikostis) {
+        this.nazevVelikostis = nazevVelikostis;
     }
 
 }

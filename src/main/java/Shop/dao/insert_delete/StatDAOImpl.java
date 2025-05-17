@@ -48,6 +48,12 @@ public class StatDAOImpl implements StatDAO {
             Integer maxId = em.createQuery("SELECT MAX(s.id) FROM Stat s", Integer.class)
                     .getSingleResult();
             if (maxId != null) {
+                // Удаляем связанные записи из таблицы Adresa
+                em.createQuery("DELETE FROM Adresa a WHERE a.idStat.id = :maxId")
+                        .setParameter("maxId", maxId)
+                        .executeUpdate();
+
+                // Удаляем запись из таблицы Stat
                 Stat stat = em.find(Stat.class, maxId);
                 if (stat != null) {
                     em.remove(stat);
