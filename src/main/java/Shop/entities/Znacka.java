@@ -17,8 +17,8 @@ public class Znacka {
     @Column(name = "nazev", nullable = false, length = 64)
     private String nazev;
 
-    @OneToMany(mappedBy = "idZnacka")
-    private Set<Produkt> produkts = new LinkedHashSet<>();
+//    @OneToMany(mappedBy = "idZnacka")
+//    private Set<Produkt> produkts = new LinkedHashSet<>();
 
     public Integer getId() {
         return id;
@@ -36,12 +36,12 @@ public class Znacka {
         this.nazev = nazev;
     }
 
-    public Set<Produkt> getProdukts() {
-        return produkts;
-    }
-
-    public void setProdukts(Set<Produkt> produkts) {
-        this.produkts = produkts;
-    }
+//    public Set<Produkt> getProdukts() {
+//        return produkts;
+//    }
+//
+//    public void setProdukts(Set<Produkt> produkts) {
+//        this.produkts = produkts;
+//    }
 
 }

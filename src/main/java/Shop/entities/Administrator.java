@@ -11,6 +11,8 @@ import java.util.Set;
 @Table(name = "\"Administrator\"")
 public class Administrator {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Administrator_id_gen")
+    @SequenceGenerator(name = "Administrator_id_gen", allocationSize = 1)
     @Column(name = "\"id_Uzivatel\"", nullable = false)
     private Integer id;
 

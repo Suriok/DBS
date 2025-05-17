@@ -7,8 +7,6 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import java.math.BigDecimal;
 import java.time.Instant;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "\"Objednavka\"")
@@ -36,9 +34,6 @@ public class Objednavka {
 
     @Column(name = "stav_platby", nullable = false, length = 12)
     private String stavPlatby;
-
-    @ManyToMany(mappedBy = "objednavkas")
-    private Set<Adresa> adresas = new LinkedHashSet<>();
 
     public Integer getId() {
         return id;
@@ -86,14 +81,6 @@ public class Objednavka {
 
     public void setStavPlatby(String stavPlatby) {
         this.stavPlatby = stavPlatby;
-    }
-
-    public Set<Adresa> getAdresas() {
-        return adresas;
-    }
-
-    public void setAdresas(Set<Adresa> adresas) {
-        this.adresas = adresas;
     }
 
 }

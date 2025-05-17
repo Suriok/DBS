@@ -18,11 +18,6 @@ public class Recenze {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "\"id_Produkt\"", nullable = false)
-    private Produkt idProdukt;
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "\"id_Uzivatel\"", nullable = false)
     private Shop.entities.Zakaznik idUzivatel;
 
@@ -42,14 +37,6 @@ public class Recenze {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Produkt getIdProdukt() {
-        return idProdukt;
-    }
-
-    public void setIdProdukt(Produkt idProdukt) {
-        this.idProdukt = idProdukt;
     }
 
     public Shop.entities.Zakaznik getIdUzivatel() {

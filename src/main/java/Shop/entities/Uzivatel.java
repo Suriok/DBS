@@ -20,7 +20,7 @@ public class Uzivatel {
     @Column(name = "prijmeni", nullable = false, length = 64)
     private String prijmeni;
 
-    @Column(name = "telefon", columnDefinition = "bpchar(13)", nullable = false)
+    @Column(name = "telefon", columnDefinition = "bpchar(13)")
     private String telefon;
 
     @Column(name = "heslo", nullable = false)

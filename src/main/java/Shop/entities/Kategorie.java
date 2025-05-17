@@ -32,11 +32,8 @@ public class Kategorie {
     @OneToMany(mappedBy = "idNadkategorii")
     private Set<Kategorie> kategories = new LinkedHashSet<>();
 
-    @ManyToMany
-    @JoinTable(name = "Nalezi",
-            joinColumns = @JoinColumn(name = "id_Kategorie"),
-            inverseJoinColumns = @JoinColumn(name = "id_Produkt"))
-    private Set<Shop.entities.Produkt> produkts = new LinkedHashSet<>();
+//    @ManyToMany
+//    private Set<Shop.entities.Produkt> produkts = new LinkedHashSet<>();
 
     public Integer getId() {
         return id;
@@ -78,12 +75,12 @@ public class Kategorie {
         this.kategories = kategories;
     }
 
-    public Set<Shop.entities.Produkt> getProdukts() {
-        return produkts;
-    }
+//    public Set<Shop.entities.Produkt> getProdukts() {
+//        return produkts;
+//    }
 
-    public void setProdukts(Set<Shop.entities.Produkt> produkts) {
-        this.produkts = produkts;
-    }
+//    public void setProdukts(Set<Shop.entities.Produkt> produkts) {
+//        this.produkts = produkts;
+//    }
 
 }
